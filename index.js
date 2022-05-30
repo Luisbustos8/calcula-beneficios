@@ -44,6 +44,24 @@ const showData = (jsonPrices, jsonSales) => {
   console.log("------------------------");
   console.log("        BENEFICIOS      ");
   console.log("------------------------");
+  UnifiesSales(jsonSales, jsonPrices);
+};
+
+const UnifiesSales = (jsonSales, jsonPrices) => {
+  const prices = jsonPrices.categories;
+  const categories = [...new Set(jsonSales.map((item) => item.CATEGORY))];
+  const unifyRepeated = categories.map((acc) => {
+    const filter = jsonSales.filter((rep) => {
+      return rep.CATEGORY === acc;
+    });
+    const filterByCategory = filter.reduce((acc, sum) => {
+      return {
+        ...sum,
+        QUANTITY: parseInt(sum.QUANTITY) + parseInt(acc.QUANTITY),
+      };
+    });
+    return filterByCategory;
+  });
 };
 
 UploadFiles(sales, prices);
