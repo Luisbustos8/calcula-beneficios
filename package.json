@@ -1,0 +1,13 @@
+{
+  "name": "calculateBenefits",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ejercicio1": "node index './ventas.csv' './precios.json'",
+    "ejercicio2": "node index './ejercicioVentas2.csv' './ejercicioPrecios2.json'"
+  },
+  "author": "",
+  "license": "ISC"
+}
