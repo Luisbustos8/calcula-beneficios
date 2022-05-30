@@ -1,8 +1,7 @@
 const fs = require("fs");
-// const { format } = require("path");
 const [, , sales, prices] = process.argv;
 
-const UploadFiles = (sales, prices) => {
+const uploadFiles = (sales, prices) => {
   ventasToJson(sales, prices);
 };
 
@@ -44,10 +43,10 @@ const showData = (jsonPrices, jsonSales) => {
   console.log("------------------------");
   console.log("        BENEFICIOS      ");
   console.log("------------------------");
-  UnifiesSales(jsonSales, jsonPrices);
+  unifiesSales(jsonSales, jsonPrices);
 };
 
-const UnifiesSales = (jsonSales, jsonPrices) => {
+const unifiesSales = (jsonSales, jsonPrices) => {
   const prices = jsonPrices.categories;
   const categories = [...new Set(jsonSales.map((item) => item.CATEGORY))];
   const unifyRepeated = categories.map((acc) => {
@@ -139,4 +138,4 @@ const calculateBenefits = (margen, unifyRepeated) => {
   });
 };
 
-UploadFiles(sales, prices);
+uploadFiles(sales, prices);
